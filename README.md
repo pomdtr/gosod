@@ -18,7 +18,7 @@ Features:
   - Uses `fs.FS` for input, so it works well with `go:embed` and [debme](https://github.com/leaanthony/debme)
   - Go alternative to [cookiecutter](https://github.com/cookiecutter/cookiecutter)
 
-## Installation 
+## Installation
 
 `go get github.com/leaanthony/gosod`
 
@@ -55,19 +55,16 @@ var mytemplate embed.FS
 func main() {
 
 	// Define a new Template directory
-	basic, err := gosod.New(mytemplate)
-	if err != nil {
-		log.Fatal(err)
-	}
+	basic := gosod.New(mytemplate)
 
 	// Make some config data
 	myConfig := &config{
 		Name: "Mat",
 	}
-		
+
 	// Ignore files
 	basic.IgnoreFile("ignored.txt")
-	
+
 	// Custom template filters
 	basic.SetTemplateFilters([]string{ ".filtername", ".tmpl" })
 
@@ -76,7 +73,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	// Ouput FS:
 	// generated/
 	// ├── custom.txt
